@@ -1,0 +1,15 @@
+services:
+  openstreampoll:
+    image: yoanbernabeu/openstreampoll:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - APP_ENV=prod
+      - SERVER_NAME=localhost # without ssl/letsencrypt
+    volumes:
+      - database_data:/var/www/openstreampoll/var/sqlite
+
+volumes:
+  database_data:

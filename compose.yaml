@@ -1,0 +1,15 @@
+services:
+  openstreampoll:
+    image: yoanbernabeu/openstreampoll:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - APP_ENV=prod
+      - SERVER_NAME=yourdomain.com # Replace with your domain for prod with SSL/Let's Encrypt
+    volumes:
+      - database_data:/var/www/openstreampoll/var/sqlite
+
+volumes:
+  database_data:
